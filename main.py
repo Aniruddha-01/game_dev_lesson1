@@ -1,64 +1,41 @@
-# Bumblebee and the flower - key events
 import pgzrun
-from random import randint
 
+TITLE = 'Quiz_Master'
+WIDTH = 870
+HEIGHT = 650
 
-# setup for the game
-WIDTH = 600
-HEIGHT = 500
+marquee_box = Rect(0,0 , 880,80)
+answer_box_1 = Rect(0,0 , 300,150)
+answer_box_2 = Rect(0,0 , 300,150)
+answer_box_3 = Rect(0,0 , 300,150)
+answer_box_4 = Rect(0,0 , 300,150)
+question_box = Rect(0,0 , 750,70)
+timer_box = Rect(0,0 , 70,70)
+skip_box = Rect(0,0 , 70,300)
 
-score = 0
-game_over = False
-
-
-bee = Actor('bee')
-bee.pos = 100,100
-
-flower = Actor('flower')
-flower.pos = 200,200
+marquee_box.move_ip(0,0)
+question_box.move_ip(20,100)
+answer_box_1.move_ip(20,190)
+answer_box_2.move_ip(350,190)
+answer_box_3.move_ip(20,360)
+answer_box_4.move_ip(350,360)
+timer_box.move_ip(800,100)
+skip_box.move_ip(800,200)
 
 def draw():
-    screen.blit('background' , (0,0))
-    flower.draw()
-    bee.draw()
-    screen.draw.text('Score:' + str(score) , color='black', topleft = (10,10))
+    screen.clear()
+    screen.fill(color = "black")
+    screen.draw.filled_rect(marquee_box,"green")
 
-    if game_over:
-        screen.fill('blue')
-        screen.draw.text("Time's up! Your final score:" + str(score), midtop=(WIDTH/2,10), fontsize = 40, color = 'red')
 
-def place_flower():
-    flower.x = randint(70,(WIDTH-70))
-    flower.y = randint(70,(HEIGHT-70))
 
-def time_up():
-    global game_over
-    game_over = True
 
-def update():
-    global score
-    if keyboard.left:
-        bee.x = bee.x - 2
-    if keyboard.right:
-        bee.x = bee.x + 2
-    if keyboard.up:
-        bee.y = bee.y - 2
-    if keyboard.down:
-        bee.y = bee.y + 2
-    if keyboard.a:
-        bee.x = bee.x - 2
-    if keyboard.d:
-        bee.x = bee.x + 2
-    if keyboard.w:
-        bee.y = bee.y - 2
-    if keyboard.s:
-        bee.y = bee.y + 2
-    flower_collected = bee.colliderect(flower)
-    if flower_collected:
-        score +=10
-        place_flower()
 
-clock.schedule(time_up, 60.0)
+
+
+
+
+
 
 
 pgzrun.go()

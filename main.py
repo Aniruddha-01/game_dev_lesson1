@@ -1,18 +1,26 @@
-def is_pangram(sentence):
-  alphabet = set('abcdefghijklmnopqrstuvwxyz')
-  sentence = set(sentence.lower())
-  sentence_letters = set()
+list = ["apple","banana","orange","pineapple"]
 
-  for letters in sentence:
-      if 'a' <= letters <= 'z':
-          sentence_letters.add(letters)
-  return len(sentence_letters) == 26
+for fruits in list:
+    print(fruits)
 
+list.append("apple")
+list.append("banana")
 
+fruit = input("Which fruit do you want? ")
 
-user_input = input("Enter a sentence: ")
+count = 0
+for fruits in list:
+    if fruit == fruits:
+        count += 1
 
-if is_pangram(user_input):
-  print("It's a pangram!")
-else:
-  print("It's not a pangram.")
+print(count)
+
+vitamins = {"apple": "C",
+            "banana":"B",
+             "pineapple":"K"}
+
+print(vitamins[1])
+
+tuple = ("mango","strawberry","banana","grape")
+
+print(tuple[1:len(tuple)])

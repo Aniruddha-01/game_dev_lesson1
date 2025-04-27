@@ -1,27 +1,18 @@
-import random 
-options = ["rock", "paper", "scissors"]
-player_score = 0
-comp_score = 0
+def is_pangram(sentence):
+  alphabet = set('abcdefghijklmnopqrstuvwxyz')
+  sentence = set(sentence.lower())
+  sentence_letters = set()
 
-for i in range(5):
-   player = input("rock, paper or scissors?")
-   player = player.lower() 
-   computer = random.choice(options)
-   print(f"computer chose {computer}")
-   if player == computer:
-      print("tie")
-   elif player == "rock" and computer == "scissors" or player == "paper" and computer    == "rock" or player == "scissors" and computer == "paper":
-      print("you win")
-      player_score += 1
-   elif player == "rock" and computer == "paper" or player == "paper" and computer ==       "scissors" or player == "scissors" and computer == "rock":
-      print("you loose")
-      comp_score += 1
+  for letters in sentence:
+      if 'a' <= letters <= 'z':
+          sentence_letters.add(letters)
+  return len(sentence_letters) == 26
 
-if comp_score>player_score:
-   print("you loose")
-elif comp_score<player_score:
-   print("you win!")
+
+
+user_input = input("Enter a sentence: ")
+
+if is_pangram(user_input):
+  print("It's a pangram!")
 else:
-   print("its a tie")
-
-print(f"your final score:{player_score}/5")
+  print("It's not a pangram.")

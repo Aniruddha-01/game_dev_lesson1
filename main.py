@@ -1,26 +1,33 @@
-list = ["apple","banana","orange","pineapple"]
 
-for fruits in list:
-    print(fruits)
+names = []
+flag = False
+while True:
+    option = int(input('You can add (1), change (2) remove(3) and view(4) names in this list. Type the number corresponding to the option you want to pick. To stop the program, press 5. '))
 
-list.append("apple")
-list.append("banana")
+    if option == 1:
+        add_name = input('Enter the name you want to add to the list ')
+        names.append(add_name)
 
-fruit = input("Which fruit do you want? ")
+    elif option == 2:
+        change_name = input('Enter the name you want to change ')
+        for i in range(len(names)):
+            if names[i] == change_name:
+                flag = True
+                names[i] = input('Enter the new name to replace the old name ')
+                break 
+            if flag == False:
+                print('Name not found ')
+    
+    elif option == 3:
+        remove_name = input('Enter the name you want to remove ')
+        names.remove(remove_name)
+    
+    elif option == 4:
+        for name in names:
+            print(name)
 
-count = 0
-for fruits in list:
-    if fruit == fruits:
-        count += 1
-
-print(count)
-
-vitamins = {"apple": "C",
-            "banana":"B",
-             "pineapple":"K"}
-
-print(vitamins[1])
-
-tuple = ("mango","strawberry","banana","grape")
-
-print(tuple[1:len(tuple)])
+    elif option == 5:
+        break 
+            
+    
+    
